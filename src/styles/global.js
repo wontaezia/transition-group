@@ -21,13 +21,13 @@ em{font-style:normal}
 img{vertical-align:top}
 a{color: #000;}
 i{font-style: normal;}
+* {cursor: none;}
 
 
 html, body {
     width: 100%;
-    height: 100%;
-    font-family: 'Noto Sans';
-    font-size: 18px;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
     word-break: keep-all;
     word-wrap: break-word;
 }
