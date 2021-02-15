@@ -1,38 +1,38 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import * as Nav from 'layout/Header/styles';
+import styled from 'styled-components';
 import Menu from 'layout/Header/Menu';
 
 function Header() {
     return (
-        <Nav.Container>
-            <Nav.Logo>
-                <Nav.Plus>
+        <Container>
+            <Logo>
+                <Plus>
                     <span />
                     <span />
-                </Nav.Plus>
-                <Nav.Ex>
+                </Plus>
+                <Ex>
                     <span />
                     <span />
-                </Nav.Ex>
-            </Nav.Logo>
-            {partners.map(({ id, path, label }) => (
+                </Ex>
+            </Logo>
+            {routes.map(({ id, path, label }) => (
                 <NavLink className="header__partners" strict exact to={path} key={id} activeClassName="nav--active">
                     {label}
                 </NavLink>
             ))}
-            <Nav.MenuButton>
+            <MenuButton>
                 <span className="line1" />
                 <span className="line2" />
-            </Nav.MenuButton>
-            <Menu partners={partners} />
-        </Nav.Container>
+            </MenuButton>
+            <Menu routes={routes} />
+        </Container>
     );
 }
 
 export default Header;
 
-const partners = [
+const routes = [
     {
         id: 1,
         path: '/union',
@@ -58,14 +58,20 @@ const partners = [
         path: '/union/cosmicray',
         label: 'Cosmicray',
     },
-    {
-        id: 6,
-        path: '/',
-        label: 'Home',
-    },
-    {
-        id: 7,
-        path: '/about',
-        label: 'About',
-    },
 ];
+
+export const Container = styled.nav`
+    ${({ theme }) => theme.flex('center', 'center')}
+
+    .nav--active {
+        color: #f00;
+    }
+`;
+
+export const Logo = styled.h1``;
+
+export const Plus = styled.div``;
+
+export const Ex = styled.div``;
+
+export const MenuButton = styled.button``;
