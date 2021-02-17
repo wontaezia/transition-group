@@ -30,7 +30,7 @@ function Header() {
 
     return (
         <Container>
-            <Logo onClick={() => history.push('/')}>HARRY</Logo>
+            <Logo onClick={() => goToPage('/')}>HARRY</Logo>
             <Menus>
                 {routes.map(({ id, path, label }) => (
                     <li key={id}>

@@ -97,7 +97,7 @@ const ImageContainer = styled.div`
 `;
 
 const Description = styled.p`
-    padding: 30px 0;
+    padding: 60px 0;
     font-size: 22px;
     letter-spacing: 0.8px;
     line-height: 1.8;
