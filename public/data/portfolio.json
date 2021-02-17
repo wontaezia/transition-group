@@ -1,0 +1,84 @@
+{
+    "portfolio": [
+        {
+            "id": 1,
+            "stagger": 0,
+            "url": "https://i.imgur.com/AQnK54s.jpg",
+            "category": "Nec facilisis",
+            "title": "Porttitor",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur maiores id facere dolores sequi velit non minus culpa, veniam, rerum, expedita sapiente soluta assumenda dolorem consequatur. Nisi perspiciatis illo dicta nulla. Corrupti odio, architecto voluptas velit beatae necessitatibus? Ducimus, quaerat!"
+        },
+        {
+            "id": 2,
+            "stagger": 1,
+            "url": "https://i.imgur.com/C487EvZ.jpg",
+            "category": "Nec facilisis",
+            "title": "Porttitor",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur maiores id facere dolores sequi velit non minus culpa, veniam, rerum, expedita sapiente soluta assumenda dolorem consequatur. Nisi perspiciatis illo dicta nulla. Corrupti odio, architecto voluptas velit beatae necessitatibus? Ducimus, quaerat!"
+        },
+        {
+            "id": 3,
+            "stagger": 0,
+            "url": "https://i.imgur.com/0oSEnZc.jpg",
+            "category": "Nec facilisis",
+            "title": "Porttitor",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur maiores id facere dolores sequi velit non minus culpa, veniam, rerum, expedita sapiente soluta assumenda dolorem consequatur. Nisi perspiciatis illo dicta nulla. Corrupti odio, architecto voluptas velit beatae necessitatibus? Ducimus, quaerat!"
+        },
+        {
+            "id": 4,
+            "stagger": 1,
+            "url": "https://i.imgur.com/CmOvGZ8.jpg",
+            "category": "Elementum",
+            "title": "Sapien",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur maiores id facere dolores sequi velit non minus culpa, veniam, rerum, expedita sapiente soluta assumenda dolorem consequatur. Nisi perspiciatis illo dicta nulla. Corrupti odio, architecto voluptas velit beatae necessitatibus? Ducimus, quaerat!"
+        },
+        {
+            "id": 5,
+            "stagger": 2,
+            "url": "https://i.imgur.com/gxFzERF.jpg",
+            "category": "Neque eu",
+            "title": "Nulla mattis",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur maiores id facere dolores sequi velit non minus culpa, veniam, rerum, expedita sapiente soluta assumenda dolorem consequatur. Nisi perspiciatis illo dicta nulla. Corrupti odio, architecto voluptas velit beatae necessitatibus? Ducimus, quaerat!"
+        },
+        {
+            "id": 6,
+            "stagger": 0,
+            "url": "https://i.imgur.com/AQnK54s.jpg",
+            "category": "Neque eu",
+            "title": "Nulla mattis",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur maiores id facere dolores sequi velit non minus culpa, veniam, rerum, expedita sapiente soluta assumenda dolorem consequatur. Nisi perspiciatis illo dicta nulla. Corrupti odio, architecto voluptas velit beatae necessitatibus? Ducimus, quaerat!"
+        },
+        {
+            "id": 7,
+            "stagger": 1,
+            "url": "https://i.imgur.com/C487EvZ.jpg",
+            "category": "Neque eu",
+            "title": "Nulla mattis",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur maiores id facere dolores sequi velit non minus culpa, veniam, rerum, expedita sapiente soluta assumenda dolorem consequatur. Nisi perspiciatis illo dicta nulla. Corrupti odio, architecto voluptas velit beatae necessitatibus? Ducimus, quaerat!"
+        },
+        {
+            "id": 8,
+            "stagger": 0,
+            "url": "https://i.imgur.com/0oSEnZc.jpg",
+            "category": "Neque eu",
+            "title": "Nulla mattis",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur maiores id facere dolores sequi velit non minus culpa, veniam, rerum, expedita sapiente soluta assumenda dolorem consequatur. Nisi perspiciatis illo dicta nulla. Corrupti odio, architecto voluptas velit beatae necessitatibus? Ducimus, quaerat!"
+        },
+        {
+            "id": 9,
+            "stagger": 1,
+            "url": "https://i.imgur.com/CmOvGZ8.jpg",
+            "category": "Neque eu",
+            "title": "Nulla mattis",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur maiores id facere dolores sequi velit non minus culpa, veniam, rerum, expedita sapiente soluta assumenda dolorem consequatur. Nisi perspiciatis illo dicta nulla. Corrupti odio, architecto voluptas velit beatae necessitatibus? Ducimus, quaerat!"
+        },
+        {
+            "id": 10,
+            "stagger": 2,
+            "url": "https://i.imgur.com/gxFzERF.jpg",
+            "category": "Neque eu",
+            "title": "Nulla mattis",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur maiores id facere dolores sequi velit non minus culpa, veniam, rerum, expedita sapiente soluta assumenda dolorem consequatur. Nisi perspiciatis illo dicta nulla. Corrupti odio, architecto voluptas velit beatae necessitatibus? Ducimus, quaerat!"
+        }
+    ]
+}

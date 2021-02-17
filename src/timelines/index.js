@@ -1,71 +1,69 @@
-import { TimelineMax as Timeline, Power1 } from 'gsap';
-
+import gsap from 'gsap';
+import { getIntroTimeline } from 'timelines/intro';
+import { getHomeTimeline } from 'timelines/home';
+import { getContactTimeline } from 'timelines/contact';
+import { getAboutTimeline } from 'timelines/about';
+import { getPortfolioTimeline } from 'timelines/portfolio';
+import { getDetailTimeline } from 'timelines/detail';
 const getDefaultTimeline = (node, delay) => {
-  const timeline = new Timeline({ paused: true });
-  const content = node.querySelector('.content');
-  const contentInner = node.querySelector('.content--inner');
+    const tl = gsap.timeline({ paused: true });
 
-  timeline
-    .from(node, 0.3, {
-      display: 'none',
-      autoAlpha: 0,
-      delay,
-      ease: Power1.easeIn,
-    })
-    .from(content, 0.15, { autoAlpha: 0, y: 25, ease: Power1.easeInOut })
-    .from(contentInner, 0.15, {
-      autoAlpha: 0,
-      delay: 0.15,
-      ease: Power1.easeIn,
+    tl.from(node, {
+        display: 'none',
+        autoAlpha: 0,
+        duration: 0.3,
+        delay,
+        ease: 'Power1.easeIn',
     });
 
-  return timeline;
+    return tl;
 };
 
-const getHomeTimeline = (node, delay) => {
-  const timeline = new Timeline({ paused: true, ease: 'Power3.easeInOut' });
-  const texts = node.querySelectorAll('span');
-  const slider = node.querySelector('.intro__slider');
-  const contentInner = node.querySelector('.intro');
+export const play = (pathname, node, appears, playOnce, setPlayOnce) => {
+    const delay = appears ? 1.9 : 0.6;
+    let timeline;
 
-  timeline
-    .to(texts, {
-      y: '0%',
-      duration: 1,
-      stagger: 0.25,
-      delay,
-    })
-    .to(slider, {
-      y: '-100%',
-      duration: 1.2,
-      delay: 0.2,
-    })
-    .addLabel('slider')
-    .to(
-      contentInner,
-      {
-        y: '-100%',
-        duration: 0.6,
-      },
-      'slider-=0.75'
-    );
+    if (!playOnce) {
+        getIntroTimeline(node, setPlayOnce);
+    }
 
-  return timeline;
-};
+    // page
+    switch (pathname) {
+        case '/': {
+            timeline = getHomeTimeline(node, delay);
+            break;
+        }
+        case '/contact': {
+            timeline = getContactTimeline(node, delay);
+            break;
+        }
+        case '/about': {
+            timeline = getAboutTimeline(node, delay);
+            break;
+        }
+        case '/portfolio': {
+            timeline = getPortfolioTimeline(node, delay);
+            break;
+        }
+        default: {
+            // dynamic routing
+            if (pathname.includes('/portfolio/')) timeline = getDetailTimeline(node, delay);
+            else timeline = getDefaultTimeline(node, delay);
+            break;
+        }
+    }
 
-export const play = (pathname, node, appears) => {
-  const delay = appears ? 0 : 0.5;
-  let timeline;
-
-  if (pathname === '/') timeline = getHomeTimeline(node, delay);
-  else timeline = getDefaultTimeline(node, delay);
-
-  window.loadPromise.then(() => requestAnimationFrame(() => timeline.play()));
+    window.loadPromise.then(() => requestAnimationFrame(() => timeline.play()));
 };
 
 export const exit = (node) => {
-  const timeline = new Timeline({ paused: true });
+    const tl = gsap.timeline({ paused: true });
 
-  timeline.to(node, 0.15, { autoAlpha: 0, ease: Power1.easeOut });
-  timeline.play();
+    tl.to(node, {
+        duration: 0.6,
+        autoAlpha: 0,
+        ease: 'Power3.easeInOut',
+        onComplete: () => window.scrollTo(0, 0),
+    });
+    tl.play();
 };
