@@ -2,8 +2,8 @@ import gsap from 'gsap';
 
 export const getDetailTimeline = (node, delay) => {
     const tl = gsap.timeline({ paused: true });
-    const top = node.querySelectorAll('.section__title, .icon');
-    const image = node.querySelector('.image');
+    const top = node.querySelectorAll('.section__title, .prev-page-button');
+    const image = node.querySelectorAll('.image, p');
 
     tl.from(node, {
         display: 'none',
@@ -21,7 +21,7 @@ export const getDetailTimeline = (node, delay) => {
                 duration: 1,
                 ease: 'Power2.easeOut',
             },
-            'start+=0.3'
+            delay === 0.6 ? 'start-=0.1' : 'start+=0.3'
         )
         .addLabel('top')
         .to(
@@ -30,6 +30,7 @@ export const getDetailTimeline = (node, delay) => {
                 y: 0,
                 opacity: 1,
                 duration: 1,
+                stagger: 0.08,
                 ease: 'Power2.easeOut',
             },
             'top-=0.75'

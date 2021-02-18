@@ -19,12 +19,12 @@ const getDefaultTimeline = (node, delay) => {
     return tl;
 };
 
-export const play = (pathname, node, appears, playOnce, setPlayOnce) => {
+export const play = (pathname, node, appears, isPlayedOnce, setIsPlayedOnce) => {
     const delay = appears ? 1.9 : 0.6;
     let timeline;
 
-    if (!playOnce) {
-        getIntroTimeline(node, setPlayOnce);
+    if (!isPlayedOnce) {
+        getIntroTimeline(node, setIsPlayedOnce);
     }
 
     // page

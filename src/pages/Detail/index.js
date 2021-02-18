@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import Title from 'shared/Title';
-import { rightArrow as Arrow } from 'shared/Icons';
+import Title from 'components/common/Title';
+import { rightArrow as Arrow } from 'components/common/icons';
+import { device } from 'styles/device';
 
 function Detail() {
     const [portfolioInfo, setPortfolioInfo] = useState({});
     const { id } = useParams();
     const history = useHistory();
 
-    /* path에 따른 동적 라우팅
+    /* query문을 활용한 동적 라우팅
     const getPortfolioInfo = async () => {
         try {
             const options = {
@@ -26,7 +27,7 @@ function Detail() {
     };
     */
 
-    // MockData 활용..
+    // lacal data 활용..
     const getPortfolioInfo = async () => {
         try {
             const options = {
@@ -52,8 +53,8 @@ function Detail() {
 
     return (
         <Container>
-            <IconContainer className="icon" onClick={() => history.push('/portfolio')}>
-                <Arrow />
+            <IconContainer className="prev-page-button" onClick={() => history.push('/portfolio')}>
+                <Arrow color={'#121212'} />
             </IconContainer>
             <Title title={title} sub={category} />
             <ImageContainer className="image">
@@ -70,9 +71,13 @@ const Container = styled.div`
     position: relative;
     width: 100%;
     max-width: 1200px;
-    padding: 160px 100px 100px;
+    padding: 160px 30px 100px;
     margin: 0 auto;
     ${({ theme }) => theme.flex(null, 'center', 'column')};
+
+    @media ${device.tablet} {
+        padding: 160px 100px 100px;
+    }
 `;
 
 const IconContainer = styled.div`
@@ -101,4 +106,6 @@ const Description = styled.p`
     font-size: 22px;
     letter-spacing: 0.8px;
     line-height: 1.8;
+    opacity: 0;
+    transform: translateY(40px);
 `;

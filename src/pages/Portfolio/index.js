@@ -4,11 +4,12 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styled, { css } from 'styled-components';
 import axios from 'axios';
-import Title from 'shared/Title';
+import Title from 'components/common/Title';
+import { device } from 'styles/device';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Portfolio({ playOnce, match }) {
+function Portfolio({ isPlayedOnce }) {
     const [portfolioData, setPortfolioData] = useState([]);
     const history = useHistory();
 
@@ -21,6 +22,7 @@ function Portfolio({ playOnce, match }) {
 
             const { data } = await axios(options);
             setPortfolioData(data.portfolio);
+            console.log('getdata');
         } catch (error) {
             console.error(error);
         }
@@ -55,7 +57,7 @@ function Portfolio({ playOnce, match }) {
     }, []);
 
     useEffect(() => {
-        const delay = playOnce ? 600 : 2600;
+        const delay = isPlayedOnce ? 600 : 2600;
 
         if (!portfolioData.length) return;
 
@@ -91,10 +93,12 @@ const Container = styled.div`
 
 const List = styled.ul`
     display: grid;
-    grid-template-columns: repeat(3, 360px);
+    grid-template-columns: 1fr;
     grid-auto-rows: 360px;
-    gap: 30px;
-    width: 1140px;
+    gap: 50px;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 30px;
     margin: 100px auto;
 
     li.button {
@@ -105,12 +109,20 @@ const List = styled.ul`
         transform: translateY(60px);
     }
 
-    li:first-child {
-        grid-area: 1 / 1 / 2 / 3;
-    }
+    @media ${device.laptopL} {
+        grid-template-columns: repeat(3, 360px);
+        grid-auto-rows: 360px;
+        gap: 30px;
+        max-width: 1140px;
+        padding: 0;
 
-    li:nth-child(7) {
-        grid-area: 3 / 2 / 4 / 4;
+        li:first-child {
+            grid-area: 1 / 1 / 2 / 3;
+        }
+
+        li:nth-child(7) {
+            grid-area: 3 / 2 / 4 / 4;
+        }
     }
 `;
 

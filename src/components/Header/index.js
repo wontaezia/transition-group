@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { device } from 'styles/device';
 
 function Header() {
     const history = useHistory();
     const [activeMenu, setActiveMenu] = useState('');
 
     const goToPage = (path) => {
-        const {
-            location: { pathname },
-        } = window;
+        const { pathname } = window.location;
 
         if (path === pathname) return;
         setActiveMenu(path);
@@ -17,9 +16,7 @@ function Header() {
     };
 
     const handleActiveMenu = () => {
-        const {
-            location: { pathname },
-        } = window;
+        const { pathname } = window.location;
 
         setActiveMenu(pathname);
     };
@@ -35,11 +32,7 @@ function Header() {
                 {routes.map(({ id, path, label }) => (
                     <li key={id}>
                         <button
-                            className={
-                                activeMenu === path
-                                    ? 'header__partners is-active'
-                                    : 'header__partners'
-                            }
+                            className={activeMenu === path ? 'header__partners is-active' : 'header__partners'}
                             onClick={() => {
                                 goToPage(path);
                             }}
@@ -104,8 +97,12 @@ const Menus = styled.ul`
         pointer-events: initial;
     }
 
+    li:first-child {
+        display: none;
+    }
+
     button {
-        margin-left: 50px;
+        margin-left: 20px;
         font-size: 14px;
         font-weight: bold;
         color: ${({ theme }) => theme.$darkGray};
@@ -114,5 +111,15 @@ const Menus = styled.ul`
 
     button.is-active {
         color: #ff7b6b;
+    }
+
+    @media ${device.tablet} {
+        li:first-child {
+            display: block;
+        }
+
+        button {
+            margin-left: 50px;
+        }
     }
 `;

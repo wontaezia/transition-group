@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Title from 'shared/Title';
+import Title from 'components/common/Title';
 
 function About() {
     return (
@@ -8,22 +8,11 @@ function About() {
             <Contents>
                 <Title title="METUS CONVALLIS" />
                 <Introduce>
-                    <p>
-                        Nam dapibus risus in mi maximus, at auctor leo convallis. Etiam sit amet
-                        nunc porttitor, eleifend nunc in, egestas dolor. Nam sodales, est id
-                        vulputate pellentesque, justo mi sollicitudin arcu, eu ultrices tortor lacus
-                        a leo. Praesent et magna ex. Nam fringilla ex et nunc hendrerit semper. Sed
-                        commodo consectetur risus, eget varius lacus egestas ut. Donec laoreet vitae
-                        metus sed elementum. Proin in leo augue. Morbi ornare eros sit amet erat
-                        tincidunt, non volutpat metus convallis. Nulla pretium est vitae velit
-                        sollicitudin finibus. Quisque vel eros aliquet, lacinia arcu at, ullamcorper
-                        sapien.
-                    </p>
+                    <p>Nam dapibus risus in mi maximus, at auctor leo convallis. Etiam sit amet nunc porttitor, eleifend nunc in, egestas dolor. Nam sodales, est id vulputate pellentesque, justo mi sollicitudin arcu, eu ultrices tortor lacus a leo. Praesent et magna ex. Nam fringilla ex et nunc hendrerit semper. Sed commodo consectetur risus, eget varius lacus egestas ut. Donec laoreet vitae metus sed elementum. Proin in leo augue. Morbi ornare eros sit amet erat tincidunt, non volutpat metus convallis. Nulla pretium est vitae velit sollicitudin finibus. Quisque vel eros aliquet, lacinia arcu at, ullamcorper sapien.</p>
                 </Introduce>
             </Contents>
             <Contents>
                 <Background className="photo" />
-                <Shape />
             </Contents>
         </Container>
     );
@@ -74,5 +63,3 @@ const Background = styled.div`
     transform: translateY(40px);
     opacity: 0;
 `;
-
-const Shape = styled.div``;

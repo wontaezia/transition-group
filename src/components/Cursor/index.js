@@ -29,11 +29,19 @@ function Cursor() {
     };
 
     const onMouseDown = () => {
-        gsap.to('.cursor span', {
+        const tl = gsap.timeline();
+        tl.to('.cursor span', {
+            scale: 1.2,
             backgroundColor: '#ff7b6b',
-            duration: 0.3,
+            duration: 0.1,
             ease: 'Power3.easeOut',
+        }).to('.cursor span', {
+            scale: 1,
+            duration: 0.12,
+            ease: 'Power2.easeOut',
         });
+
+        return tl;
     };
 
     const onMouseUp = () => {
@@ -48,8 +56,8 @@ function Cursor() {
     const onMouseHover = () => {
         gsap.killTweensOf('.cursor span');
         gsap.to('.cursor span', {
-            backgroundColor: 'rgb(200,200,200)',
-            opacity: 0.6,
+            backgroundColor: 'rgb(244,200,200)',
+            opacity: 0.3,
             duration: 0.3,
             ease: 'Power3.easeInOut',
         });

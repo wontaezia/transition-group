@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 
-export const getIntroTimeline = (node, setPlayOnce) => {
+export const getIntroTimeline = (node, setIsPlayedOnce) => {
     const headerContents = document.querySelectorAll('header h1, header li');
     const introTexts = document.querySelectorAll('.intro span');
     const slider = document.querySelector('.intro__slider');
@@ -48,7 +48,7 @@ export const getIntroTimeline = (node, setPlayOnce) => {
                 duration: 0.6,
                 stagger: 0.1,
                 ease: 'Power2.easeOut',
-                onComplete: () => setPlayOnce(true),
+                onComplete: () => setIsPlayedOnce(true),
             },
             'cover-=0.3'
         );

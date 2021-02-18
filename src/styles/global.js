@@ -21,8 +21,7 @@ em{font-style:normal}
 img{vertical-align:top}
 a{color: #000;}
 i{font-style: normal;}
-* {cursor: none;}
-
+body {cursor: none;}
 
 html, body {
     width: 100%;

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Intro from 'shared/Intro';
 
 function Main() {
     return (

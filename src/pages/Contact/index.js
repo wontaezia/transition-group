@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import Form from 'pages/Contact/Form';
-import Title from 'shared/Title';
+import Title from 'components/common/Title';
 
 function Contact() {
     return (
@@ -12,16 +12,7 @@ function Contact() {
             </Inner>
             <Shapes>
                 {circles.map(({ id, diameter, color, right, bottom, left, y }) => (
-                    <Circle
-                        className="circle"
-                        key={id}
-                        diameter={diameter}
-                        color={color}
-                        right={right}
-                        bottom={bottom}
-                        left={left}
-                        y={y}
-                    />
+                    <Circle className="circle" key={id} diameter={diameter} color={color} right={right} bottom={bottom} left={left} y={y} />
                 ))}
             </Shapes>
         </Container>
