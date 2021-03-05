@@ -19,7 +19,7 @@ const getDefaultTimeline = (node, delay) => {
     return tl;
 };
 
-export const play = (pathname, node, appears, isPlayedOnce, setIsPlayedOnce) => {
+export const play = (pathname, location, search, node, appears, isPlayedOnce, setIsPlayedOnce) => {
     const delay = appears ? 1.9 : 0.6;
     let timeline;
 
@@ -41,17 +41,29 @@ export const play = (pathname, node, appears, isPlayedOnce, setIsPlayedOnce) => 
             timeline = getAboutTimeline(node, delay);
             break;
         }
-        case '/portfolio': {
-            timeline = getPortfolioTimeline(node, delay);
-            break;
-        }
+        // case '/portfolio': {
+        //     timeline = getPortfolioTimeline(node, delay);
+        //     break;
+        // }
         default: {
             // dynamic routing
-            if (pathname.includes('/portfolio/')) timeline = getDetailTimeline(node, delay);
-            else timeline = getDefaultTimeline(node, delay);
+            if (pathname.includes('/portfolio/')) {
+                timeline = getDetailTimeline(node, delay);
+                break;
+            }
+            if (pathname === '/portfolio') {
+                if (!search) {
+                    console.log('g');
+                    timeline = getPortfolioTimeline(node, delay);
+                    break;
+                }
+            }
+            timeline = getDefaultTimeline(node, delay);
             break;
         }
     }
+
+    console.log(search, pathname, location, search === true);
 
     window.loadPromise.then(() => requestAnimationFrame(() => timeline.play()));
 };

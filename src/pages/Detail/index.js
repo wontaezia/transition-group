@@ -1,55 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
 import Title from 'components/common/Title';
 import { rightArrow as Arrow } from 'components/common/icons';
 import { device } from 'styles/device';
 
-function Detail() {
-    const [portfolioInfo, setPortfolioInfo] = useState({});
+function Detail({ portfolio }) {
     const { id } = useParams();
     const history = useHistory();
-
-    /* query문을 활용한 동적 라우팅
-    const getPortfolioInfo = async () => {
-        try {
-            const options = {
-                method: 'get',
-                url: `${API}/portfolio?id=${id}`,
-            };
-
-            const { data } = await axios(options);
-            setPortfolioInfo(data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-    */
-
-    // lacal data 활용..
-    const getPortfolioInfo = async () => {
-        try {
-            const options = {
-                method: 'get',
-                url: `/data/portfolio.json`,
-            };
-
-            const {
-                data: { portfolio },
-            } = await axios(options);
-
-            setPortfolioInfo(portfolio[id - 1]);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    useEffect(() => {
-        getPortfolioInfo();
-    }, []);
-
-    const { url, category, title, description } = portfolioInfo;
+    const { url, category, title, description } = portfolio?.[id - 1] || {};
 
     return (
         <Container>
@@ -65,7 +24,7 @@ function Detail() {
     );
 }
 
-export default Detail;
+export default React.memo(Detail);
 
 const Container = styled.div`
     position: relative;

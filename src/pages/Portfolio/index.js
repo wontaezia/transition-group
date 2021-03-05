@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styled, { css } from 'styled-components';
@@ -9,24 +9,9 @@ import { device } from 'styles/device';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Portfolio({ isPlayedOnce }) {
-    const [portfolioData, setPortfolioData] = useState([]);
+function Portfolio({ isPlayedOnce, portfolio }) {
     const history = useHistory();
-
-    const getPortfolioData = async () => {
-        try {
-            const options = {
-                method: 'get',
-                url: '/data/portfolio.json',
-            };
-
-            const { data } = await axios(options);
-            setPortfolioData(data.portfolio);
-            console.log('getdata');
-        } catch (error) {
-            console.error(error);
-        }
-    };
+    const location = useLocation();
 
     const setCardTrigger = () => {
         const cards = gsap.utils.toArray('.portfolio li');
@@ -48,29 +33,34 @@ function Portfolio({ isPlayedOnce }) {
         });
     };
 
-    const goToDetailPage = (id) => {
-        history.push(`/portfolio/${id}`);
-    };
+    // 지금 방식대로 페이지 이동없이 컴포넌트만 띄우는 거라면
+    // 쿼리문과 react-router-dom 라이브러리에 있는 useLocation 이용해서 가능할 것 같습니다.
 
-    useEffect(() => {
-        getPortfolioData();
-    }, []);
+    const now = location.search;
+
+    const goToDetailPage = (id) => {
+        history.push(`?name=${id}`);
+    };
 
     useEffect(() => {
         const delay = isPlayedOnce ? 600 : 2600;
 
-        if (!portfolioData.length) return;
+        if (!portfolio?.length) return;
 
         setTimeout(() => {
             setCardTrigger();
         }, delay);
-    }, [portfolioData]);
+    }, [portfolio]);
+
+    useEffect(() => {
+        console.log(now);
+    }, [now]);
 
     return (
         <Container className="portfolio">
             <Title title="PORTFOLIO" />
             <List>
-                {portfolioData.map(({ id, url, category, title, stagger }) => (
+                {portfolio?.map(({ id, url, category, title, stagger }) => (
                     <li onClick={() => goToDetailPage(id)} className="button" key={id} data-stagger={stagger}>
                         <Background url={url} />
                         <Text>
@@ -84,7 +74,7 @@ function Portfolio({ isPlayedOnce }) {
     );
 }
 
-export default Portfolio;
+export default React.memo(Portfolio);
 
 const Container = styled.div`
     width: 100%;
